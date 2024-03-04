@@ -1,0 +1,530 @@
+<!-- Link to website: rytmika.edu.pl -->
+
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Rytmika.edu</title>
+    <link rel="icon" href="karta.png" type="image/png">
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('tlo.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Playpen Sans', cursive;        }
+
+        .navbar {
+            position: fixed;
+            top: -200px;
+            left: 0;
+            width: 100%;
+            background-color: #87a0fb;
+            color: #87a0fb;
+            z-index: 1;
+            transition: top 1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        
+        .dashed{
+            border: 2.5px dashed #87a0fb;
+            background-color: rgb(248, 248, 248);
+            border-radius: 30px;
+            padding: 10px;
+            margin: 20px;
+            height: 100%;
+            width: 33%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar.active {
+            top: 0;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+        }
+
+        .navbar li {
+            margin: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 32px 50px;
+            background-color: #87a0fb;
+            transition: background-color 0.5s, color 0.5s;
+            display: block;
+            border-radius: 30px;
+        }
+
+        .navbar a:hover {
+            background-color: #4b17f7;
+            color: #fff;
+        }
+
+        .navbar a.active {
+            background-color: #4b17f7;
+            color: #fff;
+        }
+
+        .navbar-logo {
+            height: 80px;
+            width: auto;
+            margin-right: 20px;
+        }
+
+        .news-section {
+            text-align: center;
+            margin: 0 auto;
+            width: 80%;
+            cursor: pointer;
+            margin-top: 80px;
+            border-radius: 30px;
+            position: relative;
+            background: linear-gradient(to bottom, #ff0000 0%, transparent 100%);
+            background-size: 100% 0;
+            background-repeat: no-repeat;
+            transition: background-size 0.7s;
+            padding: 5px;
+        }
+
+        .news-section:hover {
+            background-size: 100% 100%;
+            padding: 5px;
+        }
+        
+        .news-title {
+            font-weight: bold;
+            margin-top: 0;
+            font-size: 40px;
+        }
+
+        .news-images {
+            display: flex;
+            justify-content: space-around;
+            background-color: #ffffff;
+            border-radius: 30px;
+        }
+
+        .news-image {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 35px;
+            position: relative;
+            border: 4px solid rgba(1, 1, 1, 0.755);             
+            box-shadow: 0 7px 7px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ff0000;
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: 0.5s ease;
+            border-radius: 30px;
+        }
+
+        .news-image:hover .overlay {
+            height: 100%;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+
+        .news-background {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 30px;
+        }
+
+        .mainText {
+            padding: 50px;
+        }
+
+        .mainSection {
+            background-color: #f6f6f6;
+            margin: 0 15% 5% 15%;
+            padding: 0;
+            margin-top: 60px;
+            height: auto;
+            animation-name: fadeIn;
+            animation-duration: 2s;
+            min-height: 80vh;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .news-intro {
+            text-align: center;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 30px;
+        }
+
+        .news-intro h1 {
+            font-size: 24px;
+        }
+
+        .news-intro p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 10px 0;
+        }
+
+        .Dol-logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+        }
+
+        .rounded-box {
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            margin-left: 20%;
+            margin-right: 10%;
+        }
+
+        .rounded-box h1 {
+            font-size: 24px;
+            margin-bottom: 1px;
+            background-color: #c8ff00;
+            text-align: center;
+            padding: 10px;
+            border-radius: 30px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        .rounded-box p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 10px 0;
+            
+        }
+
+        .rounded-box2 {
+            border-radius: 20px;
+            padding: 5px;
+            margin-left: 10%;
+            margin-right: 10%;
+            background-color: #ff3e3e;
+            border: 4px solid rgba(158, 4, 4, 0.46);             
+            box-shadow: 0 7px 7px rgba(0, 0, 0, 0.3);
+        }
+        
+        .rose{
+            background:#fb0000;
+        }
+
+        .center {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid rgba(158, 4, 4, 0.46); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid transparent;
+            transition: border-color 0.3s, border-width 0.3s; 
+        }
+
+        .circle:hover {
+            border: 4px solid rgba(123, 2, 2, 0.704); 
+            border-width: 5px;
+        }
+
+        .circle span {
+            text-align: center;
+            font-size: 18px; 
+            color: white;
+        }
+
+        .pulse {
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% {
+                box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+            }
+        }
+
+        .master{
+            color:black;
+            float:right;
+        }
+
+        @media (max-width:900px){
+        .master{
+            display:none
+        }
+        }
+        .body{
+            font-family: 'Lato', sans-serif;        }
+
+        .headerInfo{
+            display: grid;
+            grid-template-columns: 10fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .descSection{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+        }
+        @media only screen and (max-width: 1200px) {
+            .mainSection{
+                margin: 5% 5% 8% 5%;
+            }
+
+            .navbar{
+                font-size: 25px;
+            }
+
+            .navbar-logo{
+                display: none;
+            }
+
+            .navbar-logo{
+                margin-top: 5%;
+                margin-left: 20%;
+                height: 90px;
+                width: auto;
+            }
+
+            .navbar a:hover {
+            height:56%;
+            background-color: #4b17f7;
+            color: #fff;
+            }
+
+            .rounded-box{
+                margin-top: 15%;
+                width:100%;
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+            .rounded-box h1{
+                font-size: 40px;
+            }
+
+            .dashed{
+                width: 100%;
+                margin: 21px 15px;
+                font-size: 25px;
+            }
+
+            .news-section{
+                width: 90%;
+            }
+
+            .rounded-box2{
+                font-size: 30px;
+            }
+            
+            .circle {
+                display: none;
+            }
+
+            .circle span{
+                font-size: 30px;
+            }
+            .Dol-logo{
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top"></div>
+    <div class="navbar" id="navbar">
+        <ul>
+            <li><img src="logo.png" class="navbar-logo" alt="Logo"></li>
+            <li><a href="index.html">Strona główna</a></li>
+            <li><a href="szkolenia.html">Szkolenia</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="opinie.html">Opinie</a></li>
+
+
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mainPageButton = document.querySelector(".navbar a[href='index.html']");
+            if (mainPageButton) {
+                mainPageButton.classList.remove("active");
+            }
+        });
+        window.addEventListener("load", function () {
+            document.querySelector(".navbar").classList.add("active");
+
+            const currentURL = window.location.href;
+
+            const navbarLinks = document.querySelectorAll(".navbar a");
+
+            navbarLinks.forEach(link => {
+                if (currentURL.includes(link.getAttribute("href"))) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+    <script>
+        window.onload = function () {
+            if (window.location.hash === '#top') {
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
+
+    <div class="mainSection">
+        <div class="mainText">
+            <div class="headerInfo">
+                <div class="rounded-box" style="text-align: center;">
+                    <h1>Trochę informacji o nas</h1>
+                </div>
+                
+                <div class="circle pulse rose" onclick="redirectToTrainingPage()" id="circle">
+                    <span>Nowe wydanie</span>
+                </div>
+            </div>
+                <ul class="descSection">
+                    <li class="dashed" style="text-align: center;" >
+                            <p>Jesteśmy firmą szkoleniową, działającą od 2000 roku na polu edukacji muzycznej
+                                w przedszkolach i szkołach postawowych. Posiadamy duże doświadczenie w pracy
+                                z dziećmi przedszkolnymi oraz dziećmi z klas 0-3 szkół podstawowych.</p>
+                    </li>
+                    <li class="dashed" style="text-align: center;">
+
+                            <p>Współredagowaliśmy miesięcznik "Rytmika w przedszkolu" skierowany do nauczycieli.
+                                Jesteśmy jedną z niewielu firm, która oferuje szkolenia z pakietami autorskich,
+                                ciekawych i niepowtarzalnych zabaw, układów tanecznych
+                                i podkładów muzycznych dla dzieci.</p>
+                    </li>
+
+                    <li class="dashed" style="text-align: center;">
+                            <p>Oferujemy kursy w formie warsztatów dla nauczycieli i studentów pedagogiki
+                                z zakresu prowadzenia zajęć muzyczno-rytmicznych z dziećmi przedszkolnymi
+                                oraz w edukacji wczesnoszkolnej.</p>
+                    </li>
+                </ul>
+            </div>
+
+              
+              <script>
+                function redirectToTrainingPage() {
+                  window.location.href = "szkolenia.html";
+              
+                  const circle = document.getElementById("circle");
+              
+                  circle.classList.add("clicked");
+                }
+              </script>
+
+            
+            <div class="news-section" onclick="window.location.href='galeria.html';" style="margin-top: 1px;">
+                <div class="news-background" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
+                    <div class="rounded-box2" style="text-align: center;">
+                    <div class="news-title">Warsztaty umuzykalniające dla nauczycieli</div>
+                    <div class="data">Toruń 03.01.2024</div>
+                </div>
+            </div>
+                <div class="news-images" style="border-top-right-radius: 0px; border-top-left-radius: 0px;">
+                    <div class="news-image">
+                        <img src="Torun012024/zdjecie4.jpg" alt="Image 1">
+                        <div class="overlay">
+                            <div class="text">Naciśnij, aby zobaczyć zdjęcia</div>
+                        </div>
+                    </div>
+                    <div class="news-image">
+                        <img src="Torun012024/zdjecie6.jpg" alt="Image 2">
+                        <div class="overlay">
+                            <div class="text">Naciśnij, aby zobaczyć zdjęcia</div>
+                        </div>
+                    </div>
+                    <div class="news-image">
+                        <img src="Torun012024/zdjecie7.jpg" alt="Image 3">
+                        <div class="overlay">
+                            <div class="text">Naciśnij, aby zobaczyć zdjęcia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="logo.png" class="Dol-logo" alt="Logo">
+        </div>
+    </div>
+    
+</body>
+
+</html>

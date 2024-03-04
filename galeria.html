@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Rytmika.edu</title>
+    <link rel="icon" href="karta.png" type="image/png">
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('tlo.jpg');
+            background-attachment: fixed; 
+            background-size: cover;
+            font-family: 'Playpen Sans', cursive;          
+        }
+
+        .navbar {
+            position: fixed;
+            top: -200px;
+            left: 0;
+            width: 100%;
+            background-color: #87a0fb;
+            color: #fff;
+            z-index: 1;
+            transition: top 1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .navbar.active {
+            top: 0;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+        }
+
+        .navbar li {
+            margin: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            padding: 32px 50px;
+            background-color: #87a0fb;
+            transition: background-color 0.5s, color 0.5s;
+            display: block;
+            border-radius: 30px;
+        }
+
+        .navbar a:hover {
+            background-color: #4b17f7;
+        }
+
+        .navbar a.active {
+            background-color: #4b17f7;
+        }
+
+        .navbar-logo {
+            height: 80px;
+            width: auto;
+            margin-right: 20px;
+        }
+
+        .news-section {
+            text-align: center;
+            margin: 0 auto;
+            width: 80%;
+            cursor: pointer;
+            margin-top: 80px;
+        }
+
+        .news-title {
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .news-images {
+            display: flex;
+            justify-content: center;
+            background-color: #ffffff;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .news-image {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ff0000;
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: 0.5s ease;
+            border-radius: 30px;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+
+        .news-background {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 30px 30px 0px 0px;
+        }
+
+        .mainText {
+            padding: 50px;
+        }
+
+        .mainSection {
+            background-color: #f6f6f6;
+            margin: 0 15% 5% 15%;
+            padding: 0;
+            margin-top: 10px;
+            height: auto;
+            animation-name: fadeIn;
+            animation-duration: 2s;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: row;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .Dol-logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+
+        .course-menu {
+            margin-top: 10%;
+            background-color: #f6f6f6;
+            border-radius: 0 30px 30px 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .course-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .course-menu li {
+            margin: 0;
+        }
+
+        .course-menu a {
+            text-decoration: none;
+            color: #000;
+            padding: 10px 20px;
+            transition: background-color 0.5s, color 0.5s;
+            display: block;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        .course-menu b{
+            padding-right: 400px;
+            padding-left: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+
+        }
+        .course-menu b:hover {
+            background-color: #4b17f7;
+            color: #fff;
+            transition: 1s;
+            border-radius: 500px;
+        }
+
+        .course-menu a:after {
+            content: "";
+            position: absolute;
+            right: -5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+        }
+
+        .rounded-box2 {
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            margin-left: 5%;
+            margin-right: 0%;
+            margin-bottom: 1%;
+        }
+
+        .rounded-box {
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-bottom: 1%;
+        }
+
+        .course-images {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .course-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: width 0.3s, height 0.3s;
+            margin-bottom: 5%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-image:hover {
+            width: 100px;
+            height: 100px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            max-width: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .close-button::before,
+        .close-button::after {
+            content: '';
+            position: absolute;
+            background-color: black;
+            width: 2px;
+            height: 15px;
+        }
+
+        .close-button::before {
+            transform: rotate(45deg);
+        }
+
+        .close-button::after {
+            transform: rotate(-45deg);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .sidebar-box {
+            overflow: auto;
+            white-space: nowrap;
+            position: fixed;
+            font-size: 70%;
+            top: 14%;
+            left: 30px;
+            background-color: #eeecec;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 150px;
+            padding: 10px;
+            height: auto;
+            overflow-y: auto;
+            border-radius: 30px;
+        }
+        
+        .sidebar-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar-box li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-box a {
+            text-decoration: none;
+            color: #000;
+            padding: 10px 20px;
+            transition: background-color 0.5s, color 0.5s;
+            display: block;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        .sidebar-box a:hover {
+            background-color: #4b17f7;
+            color: #fff;
+        }
+
+        .sidebar-box a.active, .sidebar-box a.clicked {
+            background-color: #4b17f7;
+            color: #fff;
+        }
+
+        .prev-button,
+        .next-button {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(34, 34, 34);
+            border-radius: 50%;
+            color: rgb(221, 221, 221);
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.7s;
+        }
+
+        .prev-button {
+            left: -150px;
+        }
+
+        .next-button {
+            right: -150px;
+        }
+
+        .prev-button:hover,
+        .next-button:hover {
+            background-color: rgb(150, 150, 150);
+            color: rgb(34, 34, 34);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media only screen and (max-width: 1200px) {
+        .mainSection {
+            margin: 2% 2% 0% 2%;
+        }
+
+        .navbar {
+            font-size: 25px;
+        }
+
+        .navbar-logo {
+            display: none;
+        }
+
+        .navbar-logo-mobile {
+            margin-top: 5%;
+            margin-left: 20%;
+            height: 90px;
+            width: auto;
+        }
+
+        .navbar a:hover {
+            height: 56%;
+            background-color: #4b17f7;
+            color: #fff;
+        }
+
+        .navbar a.active {
+            background-color: #4b17f7;
+            color: #fff;
+            height: 70px;
+        }
+
+    
+        .rounded-box {
+            margin-top: 10%;
+            width: 90%;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+
+        .rounded-box h1 {
+            font-size: 30px;
+        }
+
+        .navbar-logo-mobile {
+            margin-top: 5%;
+            margin-left: 20%;
+            height: 90px;
+            width: auto;
+        }
+
+        .social-media-widgets {
+            flex-direction: column;
+        }
+
+        .contact-info-item {
+            flex-basis: 100%;
+            margin: 10px;
+        }
+
+        .fb-page,
+        .instagram-feed {
+            flex-basis: 100%;
+            margin: 10px;
+        }
+        .dashed{
+            font-size: 20px;
+            width: 70%;
+        }
+        .sidebar-box{
+            display: none;
+        }
+        .course-image {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="top"></div>
+    <div class="navbar" id="navbar">
+        <ul>
+            <li><img src="logo.png" class="navbar-logo" alt="Logo"></li>
+            <li><a href="index.html">Strona główna</a></li>
+            <li><a href="szkolenia.html">Szkolenia</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="opinie.html">Opinie</a></li>
+
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mainPageButton = document.querySelector(".navbar a[href='index.html']");
+            if (mainPageButton) {
+                mainPageButton.classList.remove("active");
+            }
+        });
+        window.addEventListener("load", function () {
+            document.querySelector(".navbar").classList.add("active");
+
+            const currentURL = window.location.href;
+
+            const navbarLinks = document.querySelectorAll(".navbar a");
+
+            navbarLinks.forEach(link => {
+                if (currentURL.includes(link.getAttribute("href"))) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+    <script>
+        window.onload = function () {
+            if (window.location.hash === '#top') {
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
+
+<div class="modal" id="image-modal">
+    <div class="close-button" onclick="closeImageModal()"></div>
+    <img id="modal-image" class="modal-content">
+    <div class="prev-button" onclick="prevImage()">&#9664;</div>
+    <div class="next-button" onclick="nextImage()">&#9654;</div>
+</div>
+
+
+    <div id="overlay" class="overlay"></div>
+
+
+   
+<div class="mainSection">
+    <div class="sidebar-box">
+        <ul>
+            <li><a href="galeria.html#Torun012024" onclick="myFunction(15)"> <b>Toruń, 03.01.2024</b></a></li>
+            <li><a href="galeria.html#Sierpc112023" onclick="myFunction(15)"> <b>Sierpc, 23.11.2023</b></a></li>
+            <li><a href="galeria.html#Lodz112023" onclick="myFunction(14)"> <b>Łódź, 20.11.2023</b></a></li>
+            <li><a href="galeria.html#Radom112023" onclick="myFunction(1)"> <b>Radom, 06.11.2023</b></a></li>
+            <li><a href="galeria.html#Radom092023" onclick="myFunction(2)"><b>Radom, 26.09.2023</b></a></li>
+            <li><a href="galeria.html#Dabrowa032023" onclick="myFunction(3)"><b>Dąbrowa, 25.03.2023</b></a></li>
+            <li><a href="galeria.html#Radom092022" onclick="myFunction(4)"><b>Radom, 28.09.2022</b></a></li>
+            <li><a href="galeria.html#Mochowo052018" onclick="myFunction(5)"><b>Mochowo, 16.05.2018</b></a></li>
+            <li><a href="galeria.html#Plock032018" onclick="myFunction(6)"><b>Płock, 22.03.2018</b></a></li>
+            <li><a href="galeria.html#Radom032018" onclick="myFunction(7)"><b>Radom, 02.03.2018</b></a></li>
+            <li><a href="galeria.html#Radom022018" onclick="myFunction(8)"><b>Radom, 16.02.2018</b></a></li>
+            <li><a href="galeria.html#Radom042017" onclick="myFunction(9)"><b>Radom, 20.04.2017</b></a></li>
+            <li><a href="galeria.html#Torun032017" onclick="myFunction(10)"><b>Toruń, 10.03.2017</b></a></li>
+            <li><a href="galeria.html#Sierpc042016" onclick="myFunction(11)"><b>Sierpc, 19.04.2016</b></a></li>
+            <li><a href="galeria.html#Ciechanow042016"  onclick="myFunction(12)"><b>Ciechanów, 25.04.2016</b></a></li>
+            <li><a href="galeria.html#Nasielsk022016"  onclick="myFunction(13)"><b>Nasielsk, 14.02.2016</b></a></li>
+        </ul>
+    </div>
+
+    <div class="rounded-box2">
+        <div class="course-menu">
+            <div class="rounded-box">
+                <div id="Torun012024">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov15">Toruń, 03.01.2024</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Torun012024/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Torun012024/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Torun012024/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Torun012024/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Torun012024/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Torun012024/zdjecie6.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Torun012024/zdjecie8.jpg" alt="Zdjęcie 5">
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Sierpc112023">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov15">Sierpc, 23.11.2023</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Sierpc112023/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Sierpc112023/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Sierpc112023/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Sierpc112023/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Sierpc112023/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Sierpc112023/zdjecie6.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Sierpc112023/zdjecie8.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Sierpc112023/zdjecie9.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Sierpc112023/zdjecie10.jpg" alt="Zdjęcie 5">
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div id="Lodz112023">
+                        <ul>
+                            <li>
+                                <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov14">Łódź, 20.11.2023</b></a>
+                                <div class="course-images">
+                                    <img class="course-image" src="Lodz112023/zdjecie1.jpg" alt="Zdjęcie 1">
+                                    <img class="course-image" src="Lodz112023/zdjecie2.jpg" alt="Zdjęcie 2">
+                                    <img class="course-image" src="Lodz112023/zdjecie3.jpg" alt="Zdjęcie 3">
+                                    <img class="course-image" src="Lodz112023/zdjecie4.jpg" alt="Zdjęcie 4">
+                                    <img class="course-image" src="Lodz112023/zdjecie5.jpg" alt="Zdjęcie 5">
+                                    <img class="course-image" src="Lodz112023/zdjecie6.jpg" alt="Zdjęcie 5">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                <div id="Radom112023">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov1">Radom, 06.11.2023</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Radom112023/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Radom112023/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Radom112023/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Radom112023/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Radom112023/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Radom112023/zdjecie6.jpg" alt="Zdjęcie 6">
+                                <img class="course-image" src="Radom112023/zdjecie7.jpg" alt="Zdjęcie 7">
+                                <img class="course-image" src="Radom112023/zdjecie8.jpg" alt="Zdjęcie 8">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Radom092023">
+                    <ul>
+                        <li>
+                            <a  href="#" style=" pointer-events: none;padding-top: 120px; margin-top: -120px;"><b id="titlehov2">Radom, 26.09.2023</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Radom092023/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Radom092023/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Radom092023/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Radom092023/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Radom092023/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Radom092023/zdjecie6.jpg" alt="Zdjęcie 6">
+                                <img class="course-image" src="Radom092023/zdjecie7.jpg" alt="Zdjęcie 7">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="Dabrowa032023">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov3">Dąbrowa, 25.03.2023</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Dabrowa032023/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Dabrowa032023/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Dabrowa032023/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Dabrowa032023/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Dabrowa032023/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Dabrowa032023/zdjecie6.jpg" alt="Zdjęcie 6">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Radom092022">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov4">Radom, 28.09.2022</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Radom092022/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Radom092022/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Radom092022/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Radom092022/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Radom092022/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Radom092022/zdjecie6.jpg" alt="Zdjęcie 6">
+                                <img class="course-image" src="Radom092022/zdjecie7.jpg" alt="Zdjęcie 7">
+                                <img class="course-image" src="Radom092022/zdjecie8.jpg" alt="Zdjęcie 8">
+                                <img class="course-image" src="Radom092022/zdjecie9.jpg" alt="Zdjęcie 9">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Mochowo052018">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov5">Mochowo, 16.05.2018</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Mochowo052018/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Mochowo052018/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Mochowo052018/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Mochowo052018/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Mochowo052018/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Mochowo052018/zdjecie6.jpg" alt="Zdjęcie 6">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Plock032018">
+                    <ul>
+                        <li>
+                            <a   href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov6">Płock, 22.03.2018</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Płock032018/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Płock032018/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Płock032018/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Płock032018/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Płock032018/zdjecie5.jpg" alt="Zdjęcie 5">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Radom032018">
+                    <ul>
+                        <li>
+                            <a href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov7" >Radom, 02.03.2018</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Radom032018/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Radom032018/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Radom032018/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Radom032018/zdjecie4.jpg" alt="Zdjęcie 4">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Radom022018">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov8">Radom, 16.02.2018</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Radom022018/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Radom022018/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Radom022018/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Radom022018/zdjecie4.jpg" alt="Zdjęcie 4">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Radom042017">
+                    <ul>
+                        <li>
+                            <a style="pointer-events: none; pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov9">Radom, 20.04.2017</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Radom042017/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Radom042017/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Radom042017/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Radom042017/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Radom042017/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Radom042017/zdjecie6.jpg" alt="Zdjęcie 6">
+                                <img class="course-image" src="Radom042017/zdjecie7.jpg" alt="Zdjęcie 7">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Torun032017">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov10">Toruń, 10.03.2017</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Torun032017/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Torun032017/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Torun032017/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Torun032017/zdjecie4.jpg" alt="Zdjęcie 4">
+                                <img class="course-image" src="Torun032017/zdjecie5.jpg" alt="Zdjęcie 5">
+                                <img class="course-image" src="Torun032017/zdjecie6.jpg" alt="Zdjęcie 6">
+                                <img class="course-image" src="Torun032017/zdjecie7.jpg" alt="Zdjęcie 7">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="Sierpc042016" >
+                    <ul>
+                        <li>
+                            <a href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov11" >Sierpc, 19.04.2016</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Sierpc042016/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Sierpc042016/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Sierpc042016/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Sierpc042016/zdjecie4.jpg" alt="Zdjęcie 4">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="Ciechanow042016">
+                    <ul>
+                        <li>
+                            <a href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov12" >Ciechanów, 25.04.2016</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Ciechanow042016/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Ciechanow042016/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Ciechanow042016/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Ciechanow042016/zdjecie4.jpg" alt="Zdjęcie 4">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="Nasielsk022016">
+                    <ul>
+                        <li>
+                            <a  href="#" style="pointer-events: none; padding-top: 120px; margin-top: -120px;"><b id="titlehov13">Nasielsk, 14.02.2016</b></a>
+                            <div class="course-images">
+                                <img class="course-image" src="Nasielsk022016/zdjecie1.jpg" alt="Zdjęcie 1">
+                                <img class="course-image" src="Nasielsk022016/zdjecie2.jpg" alt="Zdjęcie 2">
+                                <img class="course-image" src="Nasielsk022016/zdjecie3.jpg" alt="Zdjęcie 3">
+                                <img class="course-image" src="Nasielsk022016/zdjecie4.jpg" alt="Zdjęcie 4">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <img src="logo.png" class="Dol-logo" alt="Logo">
+        </div>
+</div>
+
+
+<script>
+    
+let currentImageIndex = 0; 
+
+function openImageModal(imageSrc) {
+    const modal = document.getElementById("image-modal");
+    const modalImage = document.getElementById("modal-image");
+    modalImage.style.maxWidth = "100%"; 
+    modalImage.style.maxHeight = "100%";
+    modalImage.style.maxHeight = "80vh"
+    
+    modalImage.src = imageSrc;
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "block";
+}
+
+function closeImageModal() {
+    const modal = document.getElementById("image-modal");
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "none";
+}
+
+function prevImage() {
+    const courseImages = document.querySelectorAll(".course-image");
+    if (currentImageIndex > 0) {
+        currentImageIndex--;
+        const imageSrc = courseImages[currentImageIndex].src;
+        openImageModal(imageSrc);
+    }
+}
+
+function nextImage() {
+    const courseImages = document.querySelectorAll(".course-image");
+    if (currentImageIndex < courseImages.length - 1) {
+        currentImageIndex++;
+        const imageSrc = courseImages[currentImageIndex].src;
+        openImageModal(imageSrc);
+    }
+}
+
+const courseImages = document.querySelectorAll(".course-image");
+courseImages.forEach((image, index) => {
+    image.addEventListener("click", function () {
+        currentImageIndex = index;
+        const imageSrc = image.src;
+        openImageModal(imageSrc);
+    });
+});
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        closeImageModal();
+    }
+});
+    
+function handleKeyboardEvents(event) {
+        if (event.key === "ArrowLeft") {
+            prevImage();
+        } else if (event.key === "ArrowRight") {
+            nextImage();
+        } else if (event.key === "Escape") {
+            closeImageModal();
+        }
+    }
+
+    document.addEventListener("keydown", handleKeyboardEvents);
+
+
+</script>
+
+<script>
+    const sidebarButtons = document.querySelectorAll(".sidebar-box a");
+    async function myFunction(clicked_id) {
+        var val = "titlehov" + clicked_id;
+        var but = document.getElementById(val)
+
+        but.style.backgroundColor = "blue";
+        but.style.color = "white";
+        but.style.borderRadius = "100px"
+        but.style.transition = " all 2s";
+        setTimeout(function(){
+        but.style.backgroundColor = "rgba(128, 128, 128, 0)";
+        but.style.color = "black";
+        },3000);
+
+    }
+
+    function wait(ms) {
+        var time = new Date();
+        var millisecs = time.getTime();
+        var startTime = millisecs;
+        var currentTime = millisecs;
+        while(currentTime - startTime < ms) {
+            time = new Date();
+            currentTime = time.getTime();
+        }
+    }
+    sidebarButtons.forEach(button => {
+        button.addEventListener("mouseenter", function () {
+            button.classList.add("hovered");
+        });
+
+        button.addEventListener("mouseleave", function () {
+            button.classList.remove("hovered");
+        });
+
+        button.addEventListener("click", function () {
+            sidebarButtons.forEach(btn => btn.classList.remove("active"));
+            
+            button.classList.add("active");
+
+            const targetId = button.getAttribute("href").substring(1);
+            const textOverlays = document.querySelectorAll(".text");
+            textOverlays.forEach(textOverlay => {
+                textOverlay.style.height = "0";
+            });
+            const targetTextOverlay = document.querySelector(`.${targetId} .text`);
+            targetTextOverlay.style.height = "100%";
+        });
+    });
+</script>
+
+
+
+<script>
+    const sidebarItems = document.querySelectorAll(".sidebar-box li");
+
+    sidebarItems.forEach(item => {
+        item.addEventListener("click", function () {
+            const targetId = item.id;
+            const courseImages = document.querySelectorAll(".course-image");
+            const imageSrc = document.querySelector(`.${targetId} img`).src;
+
+            const index = Array.from(courseImages).findIndex(image => image.src === imageSrc);
+
+            if (index >= 0) {
+                currentImageIndex = index;
+                openImageModal(imageSrc);
+                
+            }
+        });
+    });
+</script>
+
+</script>
+
+</body>
+
+</html>

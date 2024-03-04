@@ -1,0 +1,445 @@
+<!-- Link to website: rytmika.edu.pl -->
+
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Rytmika.edu</title>
+    <link rel="icon" href="karta.png" type="image/png">
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('tlo.jpg');
+            background-size: cover;
+            font-family: 'Playpen Sans', cursive;       
+        }
+
+        .navbar {
+            position: fixed;
+            top: -200px;
+            left: 0;
+            width: 100%;
+            background-color: #87a0fb;
+            color: #87a0fb;
+            z-index: 1;
+            transition: top 1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom-left-radius: 30px; 
+            border-bottom-right-radius: 30px;
+        }
+
+        .navbar.active {
+            top: 0;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+        }
+
+        .navbar li {
+            margin: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 32px 50px;
+            background-color: #87a0fb;
+            transition: background-color 0.5s, color 0.5s;
+            display: block;
+            border-radius: 30px; 
+        }
+
+        .navbar a:hover {
+            background-color: #4b17f7;
+            color: #fff;
+        }
+
+        .navbar a.active {
+            background-color: #4b17f7;
+            color: #fff;
+        }
+
+        .navbar-logo {
+            height: 80px;
+            width: auto;
+            margin-right: 20px;
+        }
+
+        .news-section {
+            text-align: center;
+            margin: 0 auto;
+            width: 80%;
+            cursor: pointer;
+            margin-top: 80px;
+        }
+
+        .news-title {
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .news-images {
+            display: flex;
+            justify-content: center;
+            background-color: #ffffff;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .news-image {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ff0000;
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: 0.5s ease;
+            border-radius: 30px;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+
+        .news-background {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 30px 30px 0px 0px;
+        }
+
+        .mainText {
+            padding: 50px;
+        }
+
+        .mainSection {
+            background-color: #f6f6f6;
+            margin: 0 15% 5% 15%;
+            padding: 0;
+            margin-top: 60px;
+            height: auto;
+            animation-name: fadeIn;
+            animation-duration: 2s;
+            min-height: 80vh;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .Dol-logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+
+        .rounded-box {
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            margin-left: 22%;
+            margin-right: 22%;
+            margin-bottom: 3%;
+
+
+        }
+        .rounded-box h1 {
+            font-size: 24px;
+            margin-bottom: 1px;
+            background-color: #f6fa23;
+            text-align: center;
+            padding: 10px;
+            border-radius: 30px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        .dashed{
+            border: 2.5px dashed #ff0000;
+            background-color: rgb(248, 248, 248);
+            border-radius: 60px;
+            padding: 10px;
+            margin-left: 1%;
+            margin-right: 1%;
+            height: 100%;
+            width: 40%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .descSection{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+        }
+
+        .opinie-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .opinia-container {
+            width: 160px; 
+            height: 120px;
+            margin: 10px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .opinia-container:nth-child(4n+1) {
+            margin-left: 0;
+        }
+
+        .opinia-container h3 {
+            font-size: 20px;
+        }
+
+        .opinia-container p {
+            font-size: 16px;
+        }
+
+
+        img:not(.navbar-image, .Dol-logo) {
+            --g: 4px;    
+            --b: 12px;   
+            --c: #669706;
+
+            padding: calc(var(--g) + var(--b));
+            --_c: #0000 0 25%, var(--c) 0 50%;
+            --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+            --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+            background:
+                var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+                var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+            background-size: 200% var(--b),var(--b) 200%;
+            cursor: pointer;
+            filter: grayscale(50%);
+            transition: .3s;
+        }
+
+        img:not(.navbar-image, .Dol-logo):hover {
+            --_p: 75%;
+            filter: grayscale(0%);
+        }
+
+        .Opinie {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .Dol-logo {
+            margin-top: 7%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+        }
+
+
+    @media only screen and (max-width: 1200px) {
+    .mainSection {
+        margin: 5% 5% 8% 5%;
+    }
+
+    .navbar {
+        font-size: 25px;
+    }
+
+    .navbar-logo {
+        display: none;
+    }
+
+    .navbar-logo-mobile {
+        margin-top: 5%;
+        margin-left: 20%;
+        height: 90px;
+        width: auto;
+    }
+
+    .navbar a:hover {
+        height: 56%;
+        background-color: #4b17f7;
+        color: #fff;
+    }
+
+    .navbar a.active {
+        background-color: #4b17f7;
+        color: #fff;
+        height: 70px;
+    }
+
+   
+    .rounded-box {
+        margin-top: 10%;
+        width: 80%;
+        margin-left: 7%;
+        margin-right: 5%;
+    }
+
+    .rounded-box h1 {
+        font-size: 30px;
+    }
+
+    .navbar-logo-mobile {
+        margin-top: 5%;
+        margin-left: 20%;
+        height: 90px;
+        width: auto;
+    }
+
+    .social-media-widgets {
+        flex-direction: column;
+    }
+
+    .contact-info-item {
+        flex-basis: 100%;
+        margin: 10px;
+    }
+
+    .fb-page,
+    .instagram-feed {
+        flex-basis: 100%;
+        margin: 10px;
+    }
+    .dashed{
+        font-size: 20px;
+        width: 70%;
+    }
+    .Dol-logo{
+        width: 50%;
+    }
+    .Opinie {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .opinia-container {
+        width: 80%;
+        margin: 10px auto; 
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div id="top"></div>
+        <div class="navbar" id="navbar">
+            <ul>
+                <li><img src="logo.png" class="navbar-logo navbar-image" alt="Logo"></li>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="szkolenia.html">Szkolenia</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="opinie.html">Opinie</a></li>
+
+            </ul>
+        </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mainPageButton = document.querySelector(".navbar a[href='index.html']");
+            if (mainPageButton) {
+                mainPageButton.classList.remove("active");
+            }
+        });
+        
+        window.addEventListener("load", function () {
+            document.querySelector(".navbar").classList.add("active");
+
+            const currentURL = window.location.href;
+
+            const navbarLinks = document.querySelectorAll(".navbar a");
+
+            navbarLinks.forEach(link => {
+                if (currentURL.includes(link.getAttribute("href"))) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+    <script>
+        window.onload = function () {
+            if (window.location.hash === '#top') {
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
+    
+    <div class="mainSection">
+        <div class="mainText">
+            <div class="headerInfo">
+                <div class="rounded-box" style="text-align: center;">
+                    <h1>Opinie</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class = "Opinie">
+            <img src="napisz.jpg" onclick="window.open('//g.page/r/CaU3rTMe0bs2EBM/review', '_blank');">
+            <img src="wyswietl.jpg" onclick = "window.open('https://www.google.pl/maps/place/Rytmika/@52.8564506,19.6500569,17z/data=!4m17!1m8!3m7!1s0x471c5f6729b66c37:0x29a0db41742c3f99!2sWsp%C3%B3lna+11,+09-200+Sierpc!3b1!8m2!3d52.8564506!4d19.6526318!16s%2Fg%2F11p5_qg0w4!3m7!1s0x471c5f6729bd2bd1:0x36bbd11e33ad37a5!8m2!3d52.856482!4d19.652569!9m1!1b1!16s%2Fg%2F11fjmv24p3?hl=pl&entry=ttu');"style="--c: #945f31; margin-left:30px;">
+        </div>
+
+        <img src="logo.png" class="Dol-logo" alt="Logo">
+
+    </body>
+
+</html>
